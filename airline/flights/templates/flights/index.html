@@ -1,0 +1,24 @@
+{% extends "flights/layout.html" %}
+        {% block body %}
+        <h1> Here are all of the flights </h1>
+            <ul>
+            {% for flight in flights%}
+            <a href= "{% url 'flight' flight.id %}">
+                <li>{{ flight }}</li>
+                    <br>
+                <li>{{ flight.duration }}</li>
+                    <hr>
+            </a>
+            {% endfor %}
+            </ul>
+        
+        <h1> Here are all of the airports </h1>
+            <ul>
+            {% for airport in airports %}
+                <li>{{ airport }}</li>
+                    <br>
+                <li>{{ airport.code }}</li>
+                    <hr>
+            {% endfor %}
+            </ul>
+        {% endblock %}
