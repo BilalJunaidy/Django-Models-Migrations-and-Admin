@@ -16,5 +16,18 @@
             <li> No passenger </li>
         {% endfor %}
     </ul>
+    <form action="{% url 'book' flight.id %}" method="POST">
+        {% csrf_token %}
+        <select name="passenger" id="">
+
+                {% for non_passenger in non_passengers %}
+                    <option value={{non_passenger.id}}> {{non_passenger}} </option>
+                {% empty %}
+                    <option value="empty">No passenger available to be added</option>
+                {% endfor %}
+
+        </select>
+        <button type="submit">Add new passenger to this flight</button>    
+    </form>
     <a href="{% url 'index' %}">All Flights</a>
 {% endblock %}
